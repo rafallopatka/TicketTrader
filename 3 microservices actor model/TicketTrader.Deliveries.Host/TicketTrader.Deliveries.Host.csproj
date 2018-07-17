@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TicketTrader.Deliveries.Persistence.Mongo\TicketTrader.Deliveries.Persistence.Mongo.csproj" />
+    <ProjectReference Include="..\TicketTrader.Deliveries\TicketTrader.Deliveries.csproj" />
+    <ProjectReference Include="..\TicketTrader.Shared.Base\TicketTrader.Shared.Base.csproj" />
+    <ProjectReference Include="..\TicketTrader.Shared.Bus.RabbitMq\TicketTrader.Shared.Bus.RabbitMq.csproj" />
+    <ProjectReference Include="..\TicketTrader.Shared.Persistence.Mongo\TicketTrader.Shared.Persistence.Mongo.csproj" />
+  </ItemGroup>
+
+</Project>

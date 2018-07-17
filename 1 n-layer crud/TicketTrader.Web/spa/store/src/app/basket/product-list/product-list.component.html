@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Tickets</div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let ticketDetails of tickets">
+
+        <strong><a [routerLink]="['/SeatingPlan', ticketDetails.event.id]">{{ticketDetails.event.title}}</a></strong>
+
+        <span class="ticket-priceZoneName">{{ticketDetails.ticket.priceZoneName}}</span> -
+        <span class="ticket-priceoption">{{ticketDetails.ticket.priceOptionName}}</span>
+
+        <a (click)="removeTicket(ticketDetails.ticket)" class="btn-remove pull-right"><i class="glyphicon glyphicon-remove"></i></a>
+
+        <strong class="pull-right ticket-amount">{{ticketDetails.ticket.grossAmount}} PLN</strong>
+      </li>
+    </ul>
+  </div>
+</div>

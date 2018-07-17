@@ -1,0 +1,16 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    // The following will hide the js and map files in the editor
+    "files.exclude": {
+        "**/*.map": true,
+        "node_modules": true,
+        "dist": true,
+        "e2e": true,
+        "karma.conf.js": true,
+        "protractor.conf.js": true,
+        "**/*.spec.ts": true,
+        "**/*.spec.json": true,
+        "**/*.test.ts": true,
+        "**/test.ts": true
+    }
+}

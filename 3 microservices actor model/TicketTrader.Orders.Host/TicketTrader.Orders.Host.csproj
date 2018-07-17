@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TicketTrader.Orders\TicketTrader.Orders.csproj" />
+    <ProjectReference Include="..\TicketTrader.Shared.Base\TicketTrader.Shared.Base.csproj" />
+    <ProjectReference Include="..\TicketTrader.Shared.Bus.RabbitMq\TicketTrader.Shared.Bus.RabbitMq.csproj" />
+  </ItemGroup>
+
+</Project>

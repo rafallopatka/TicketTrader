@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="sidebar app-height">
+        <app-ticket-options-pad [ticketOptions]="ticketOptions" [eventId]="eventId" >
+        </app-ticket-options-pad>
+
+        <app-reservations-pad  [eventId]="eventId" [activeOrder]="activeOrder" [currentClient]="client" [currentUser]="user">>
+        </app-reservations-pad>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <app-plan-visualization [eventId]="eventId" [activeOrder]="activeOrder" [currentClient]="client" [currentUser]="user">
+      </app-plan-visualization>
+    </div>
+  </div>
+</div>
+
+
+ <app-ticket-options-dialog [ticketOptions]="ticketOptions" [eventId]="eventId" [activeOrder]="activeOrder" [currentClient]="client" [currentUser]="user">
+</app-ticket-options-dialog> 

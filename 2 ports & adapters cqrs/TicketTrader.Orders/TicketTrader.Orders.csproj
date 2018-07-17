@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TicketTrader.Orders.Canonical\TicketTrader.Orders.Canonical.csproj" />
+    <ProjectReference Include="..\TicketTrader.Shared.Base\TicketTrader.Shared.Base.csproj" />
+    <ProjectReference Include="..\TicketTrader.Shared.Kernel\TicketTrader.Shared.Kernel.csproj" />
+  </ItemGroup>
+
+</Project>

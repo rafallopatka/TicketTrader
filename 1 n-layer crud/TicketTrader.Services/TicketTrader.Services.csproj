@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Domain\Orders\OrderReservations\**" />
+    <EmbeddedResource Remove="Domain\Orders\OrderReservations\**" />
+    <None Remove="Domain\Orders\OrderReservations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TicketTrader.Dal\TicketTrader.Dal.csproj" />
+    <ProjectReference Include="..\TicketTrader.Domain\TicketTrader.Model\TicketTrader.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
+  </ItemGroup>
+
+</Project>

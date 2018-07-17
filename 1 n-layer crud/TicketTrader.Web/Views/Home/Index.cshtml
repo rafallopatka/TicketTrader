@@ -1,0 +1,63 @@
+﻿@using TicketTrader.Web.ViewModels
+@model EventListViewModel
+
+@{
+    ViewData["Title"] = "TicketTrader.Web";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Events</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td>Event</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+            
+                @foreach (var e in Model.EventsList)
+                {
+                    <tr class="event">
+                        <td>
+                            <strong class="title">@e.Title</strong> | 
+                            <span class="id">(@e.Id)</span> | 
+                            <span class="date">@e.DateTime</span>
+                            <span class="time">@e.Duration</span>
+                            <hr/>
+                            <em>Description:</em>
+                            <span class="description">@e.Description</span>
+                            <hr/>
+                            <em>Cast:</em>
+
+                            <span class="cast">@e.Cast</span>
+                            <hr />
+                            <em>Authors:</em>
+
+                            <span class="authors">@e.Authors</span>
+                            <hr />
+                            <div class="categories">
+                                <ul class="nav nav-pills" role="tablist">
+                                    
+                                    @foreach (var c in e.Categories)
+                                    {
+                                        <li role="presentation"><a href="#">@c</a></li>
+                                    }
+                                </ul>
+                            </div>
+
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="@Url.Action("Index", "Spa", new { eventId = e.Id })">Buy ticket</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

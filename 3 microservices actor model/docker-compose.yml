@@ -1,0 +1,82 @@
+version: '3'
+
+services:
+  db.tickettrader.identity:
+    image: 'postgres'
+    container_name: db_identity
+
+  db.tickettrader.dal:
+    image: 'postgres'
+    container_name: db_dal
+
+  db.mongo:
+    image: 'mongo'
+    container_name: db_mongo
+
+  bus.rabbit:
+    image: 'rabbitmq:3-management'
+    container_name: bus
+
+  tickettrader.web:
+    image: tickettrader.web
+    container_name: tickettrader_web
+    build:
+      context: ./TicketTrader.Web
+      dockerfile: Dockerfile
+
+  tickettrader.identity:
+    image: tickettrader.identity
+    container_name: tickettrader_identity
+    build:
+      context: ./TicketTrader.Identity
+      dockerfile: Dockerfile
+
+  tickettrader.api:
+    image: tickettrader.api
+    container_name: tickettrader_api
+    build:
+      context: ./TicketTrader.Api
+      dockerfile: Dockerfile
+
+  tickettrader.management:
+    image: tickettrader.management
+    container_name: tickettrader_management
+    build:
+      context: ./TicketTrader.Management
+      dockerfile: Dockerfile
+
+  tickettrader.eventdefinitions.gateway:
+    image: tickettrader.eventdefinitions.gateway
+    container_name: tickettrader_eventdefinitions_gateway
+    build:
+      context: ./TicketTrader.EventDefinitions.Gateway
+      dockerfile: Dockerfile
+
+  tickettrader.customers.host:
+    image: tickettrader.customers.host
+    container_name: tickettrader_customers_host
+    build:
+      context: .
+      dockerfile: TicketTrader.Customers.Host/Dockerfile
+
+
+  tickettrader.payments.host:
+    image: tickettrader.payments.host
+    build:
+      context: .
+      dockerfile: TicketTrader.Payments.Host/Dockerfile
+
+
+  tickettrader.deliveries.host:
+    image: tickettrader.deliveries.host
+    build:
+      context: .
+      dockerfile: TicketTrader.deliveries.Host/Dockerfile
+
+
+  tickettrader.orders.host:
+    image: tickettrader.orders.host
+    build:
+      context: .
+      dockerfile: TicketTrader.Orders.Host/Dockerfile
+

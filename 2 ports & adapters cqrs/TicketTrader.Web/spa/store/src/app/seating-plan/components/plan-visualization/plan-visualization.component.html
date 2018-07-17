@@ -1,0 +1,4 @@
+<div class="plan-visualization app-height">
+  <div [appSvgMap]="visualizationObservable | async" [allReservedSeats]="allReservedSeats" [userSelectedSeats]="userSelectedSeats" (onSeatClicked)="seatSelected($event)" >
+  </div>
+</div>

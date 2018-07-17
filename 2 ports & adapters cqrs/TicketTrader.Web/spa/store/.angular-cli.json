@@ -1,0 +1,113 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "ticket-trader"
+  },
+  "apps": [{
+    "root": "src",
+    "outDir": "dist",
+    "assets": [{
+        "glob": "**/*.js",
+        "input": "../node_modules/oidc-client/dist/",
+        "output": "./"
+      },
+      {
+        "glob": "**/*",
+        "input": "./assets/",
+        "output": "./assets/"
+      },
+      {
+        "glob": "favicon.ico",
+        "input": "./",
+        "output": "./"
+      },
+      {
+        "glob": "silent-calback.html",
+        "input": "./",
+        "output": "./"
+      },
+      {
+        "glob": "signin-callback.html",
+        "input": "./",
+        "output": "./"
+      },
+      {
+        "glob": "401.html",
+        "input": "./",
+        "output": "./"
+      },
+      {
+        "glob": "403.html",
+        "input": "./",
+        "output": "./"
+      },
+      {
+        "glob": "404.html",
+        "input": "./",
+        "output": "./"
+      },
+      {
+        "glob": "503.html",
+        "input": "./",
+        "output": "./"
+      },
+      {
+        "glob": "maintenance.html",
+        "input": "./",
+        "output": "./"
+      },
+      {
+        "glob": "**/*.js",
+        "input": "./scripts/",
+        "output": "./"
+      }
+    ],
+    "index": "index.html",
+    "main": "main.ts",
+    "polyfills": "polyfills.ts",
+    "test": "test.ts",
+    "tsconfig": "tsconfig.app.json",
+    "testTsconfig": "tsconfig.spec.json",
+    "prefix": "app",
+    "styles": [
+      "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+      "styles.css"
+    ],
+    "scripts": [
+      "../node_modules/jquery/dist/jquery.min.js",
+      "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+      "../node_modules/svg.js/dist/svg.min.js",
+      "../node_modules/svg.panzoom.js/dist/svg.panzoom.min.js",
+      "scripts/layout.js"
+    ],
+    "environmentSource": "environments/environment.ts",
+    "environments": {
+      "dev": "environments/environment.ts",
+      "prod": "environments/environment.prod.ts"
+    }
+  }],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [{
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TicketTrader.Customers.Canonical\TicketTrader.Customers.Canonical.csproj" />
+    <ProjectReference Include="..\TicketTrader.Deliveries.Canonical\TicketTrader.Deliveries.Canonical.csproj" />
+    <ProjectReference Include="..\TicketTrader.Deliveries\TicketTrader.Deliveries.csproj" />
+    <ProjectReference Include="..\TicketTrader.Orders.Canonical\TicketTrader.Orders.Canonical.csproj" />
+    <ProjectReference Include="..\TicketTrader.Payments.Canonical\TicketTrader.Payments.Canonical.csproj" />
+    <ProjectReference Include="..\TicketTrader.Shared.Base\TicketTrader.Shared.Base.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.5\Profile\Profile259\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

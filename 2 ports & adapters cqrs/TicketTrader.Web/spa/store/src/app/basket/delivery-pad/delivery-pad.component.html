@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Delivery</div>
+  <div class="panel-body">
+      <table class="table table-striped table-hove table-condensed" *ngIf="deliveries">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Delivery type</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let option of deliveries;">
+              <td>
+                <input type="radio" name="deliveryt-option" [value]="option.id" [(ngModel)]="selectedOption"  (change)="onDeliveryOptionChanged(option)">
+              </td>
+              <td>{{option.name}}</td>
+              <td>{{option.grossAmount}} zł</td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>
+  

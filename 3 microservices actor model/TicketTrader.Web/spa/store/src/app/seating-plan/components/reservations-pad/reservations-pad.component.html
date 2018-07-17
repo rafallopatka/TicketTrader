@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Reservations</div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let ticket of tickets">
+
+
+        <span class="ticket-priceZoneName">{{ticket.priceZoneName}}</span> -
+        <span class="ticket-priceoption">{{ticket.priceOptionName}}</span>
+        <span class="ticket-amount">-; {{ticket.grossAmount}} PLN</span>
+        <a (click)="removeTicket(ticket)" class="btn-remove pull-right"><i class="glyphicon glyphicon-remove"></i></a>
+      </li>
+    </ul>
+  </div>
+  <div class="panel-footer">
+    <a routerLink="/Basket" class="btn btn-primary center">Go to Basket</a>
+  </div>
+</div>

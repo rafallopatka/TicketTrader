@@ -1,0 +1,24 @@
+.price-zone-name{
+    font-weight: bolder;
+}
+
+.price-zone-option {
+  border: 1px solid #777;
+  padding-left: 3px;
+  margin: 2px;
+  display: inline-block;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+
+  background: #fdfdfd;
+  text-transform: uppercase;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.price-zone-option-amount {
+  line-height: inherit;
+  border-radius: 8px;
+}

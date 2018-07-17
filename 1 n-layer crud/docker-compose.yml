@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  tickettrader.web:
+    image: tickettrader.web
+    build:
+      context: ./TicketTrader.Web
+      dockerfile: Dockerfile
+
+  tickettrader.identity:
+    image: tickettrader.identity
+    build:
+      context: ./TicketTrader.Identity
+      dockerfile: Dockerfile
+
+  tickettrader.api:
+    image: tickettrader.api
+    build:
+      context: ./TicketTrader.Api
+      dockerfile: Dockerfile
+
+  tickettrader.management:
+    image: tickettrader.management
+    build:
+      context: ./TicketTrader.Management
+      dockerfile: Dockerfile

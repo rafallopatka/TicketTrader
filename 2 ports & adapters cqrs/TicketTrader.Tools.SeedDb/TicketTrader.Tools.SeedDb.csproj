@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="22.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TicketTrader.EventDefinitions.EntityFramework\TicketTrader.EventDefinitions.EntityFramework.csproj" />
+    <ProjectReference Include="..\TicketTrader.EventDefinitions\TicketTrader.EventDefinitions.csproj" />
+  </ItemGroup>
+
+</Project>

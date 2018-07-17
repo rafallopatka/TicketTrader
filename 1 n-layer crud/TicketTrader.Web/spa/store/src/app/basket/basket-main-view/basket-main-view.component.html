@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <app-product-list [activeOrder]="activeOrder" [currentClient]="client" [currentUser]="user">
+      </app-product-list>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <app-delivery-pad [activeOrder]="activeOrder" [currentClient]="client" [currentUser]="user">
+      </app-delivery-pad>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <app-payment-pad [activeOrder]="activeOrder" [currentClient]="client" [currentUser]="user">
+      </app-payment-pad>
+    </div>
+  </div>
+</div>

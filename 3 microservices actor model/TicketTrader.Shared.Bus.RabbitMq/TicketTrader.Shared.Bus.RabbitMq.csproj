@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="RawRabbit" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Enrichers.GlobalExecutionId" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Enrichers.HttpContext" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Enrichers.MessageContext" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Enrichers.MessageContext.Respond" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Enrichers.MessageContext.Subscribe" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Enrichers.MessagePack" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Enrichers.QueueSuffix" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Logging.Serilog" Version="2.0.0-beta7" />
+    <PackageReference Include="RawRabbit.Operations.Get" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Operations.Publish" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Operations.Request" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Operations.Respond" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Operations.StateMachine" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Operations.Subscribe" Version="2.0.0-rc5" />
+    <PackageReference Include="RawRabbit.Operations.Tools" Version="2.0.0-rc5" />
+    <PackageReference Include="System.Reactive" Version="4.0.0-preview00001" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TicketTrader.Shared.Base\TicketTrader.Shared.Base.csproj" />
+  </ItemGroup>
+
+</Project>

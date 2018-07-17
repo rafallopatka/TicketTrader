@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Payment</div>
+  <div class="panel-body">
+      <table class="table table-striped table-hove table-condensed" *ngIf="payments">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Payment type</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let option of payments;">
+              <td>
+                <input type="radio" name="payment-option" [value]="option.id" [(ngModel)]="selectedOption"  (change)="onPaymentOptionChanged(option)">
+              </td>
+              <td>{{option.name}}</td>
+              <td>{{option.grossAmount}} zł</td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+   <div class="panel-footer">
+     <a class="btn btn-primary center" (click)="finalizeOrder()">Finalize</a>
+   </div>
+</div>
+  

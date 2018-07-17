@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TicketTrader.Deliveries.Canonical\TicketTrader.Deliveries.Canonical.csproj" />
+    <ProjectReference Include="..\TicketTrader.Shared.Base\TicketTrader.Shared.Base.csproj" />
+    <ProjectReference Include="..\TicketTrader.Shared.Kernel\TicketTrader.Shared.Kernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Marten">
+      <HintPath>C:\Users\rafal\.nuget\packages\marten\2.3.2\lib\netstandard2.0\Marten.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Price zones</div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let priceZone of priceZonesObservable | async">
+        <h5 class="price-zone-name">{{priceZone.name}}</h5>
+        <span class="price-zone-option" *ngFor="let option of priceZone.options">
+            {{option.name}} <span class="badge price-zone-option-amount">{{option.grossAmount}} zł</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>

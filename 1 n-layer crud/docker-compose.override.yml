@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  tickettrader.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TICKETTRADER_IDENTITY_HOST=http://tickettrader.identity
+      - TICKETTRADER_API_HOST=http://tickettrader.api
+      - TICKETTRADER_API_SECRET=S3cr3t@
+    ports:
+      - "5000:80"
+    depends_on:
+      - tickettrader.identity
+      - tickettrader.api
+
+  tickettrader.api:
+    environment:
+      - TICKETTRADER_DAL_DB_CONNNECTION_STRING=User ID=postgres;Password=devpwd;Host=db.tickettrader.dal;Port=5432;Database=tickettrader-dal;Pooling=true;
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TICKETTRADER_IDENTITY_HOST=http://tickettrader.identity
+      - TICKETTRADER_WEB_HOST=http://tickettrader.web
+      - TICKETTRADER_API_SECRET=S3cr3t@
+    ports:
+      - "5010:80"
+    depends_on:
+      - tickettrader.identity
+      - db.tickettrader.dal
+
+  tickettrader.identity:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TICKETTRADER_IDENTITY_DB_CONNNECTION_STRING=User ID=postgres;Password=devpwd;Host=db.tickettrader.identity;Port=5432;Database=tickettrader-identity;Pooling=true;
+      - TICKETTRADER_WEB_HOST=http://tickettrader.web
+      - TICKETTRADER_API_HOST=http://tickettrader.api
+      - TICKETTRADER_API_SECRET=S3cr3t@
+    ports:
+      - "5020:80"
+    depends_on:
+      - db.tickettrader.identity
+
+  tickettrader.management:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TICKETTRADER_IDENTITY_HOST=http://tickettrader.identity
+      - TICKETTRADER_API_HOST=http://tickettrader.api
+      - TICKETTRADER_API_SECRET=S3cr3t@
+    ports:
+      - "5030:80"
+    depends_on:
+      - tickettrader.identity
+      - tickettrader.api
+
+  db.tickettrader.identity:
+    image: 'postgres'
+    environment:
+      - POSTGRES_PASSWORD=devpwd
+    ports:
+      - "5432:5432"
+
+  db.tickettrader.dal:
+    image: 'postgres'
+    environment:
+      - POSTGRES_PASSWORD=devpwd
+    ports:
+      - "5433:5432"

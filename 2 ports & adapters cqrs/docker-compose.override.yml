@@ -1,0 +1,157 @@
+version: '3'
+
+services:
+  db.tickettrader.identity:
+    environment:
+      - POSTGRES_PASSWORD=devpwd
+    ports:
+      - "5432:5432"
+
+  db.tickettrader.dal:
+    environment:
+      - POSTGRES_PASSWORD=devpwd
+    ports:
+      - "5433:5432"
+
+  db.mongo:
+    ports:
+      - "27017:27017"
+    volumes:
+        - /app/hdp/mongo/data:/data/db
+
+
+  bus.rabbit:
+    environment:
+      - RABBITMQ_DEFAULT_USER=dev
+      - RABBITMQ_DEFAULT_PASS=qwerty
+    ports:
+      - "15672:15672"
+  
+  tickettrader.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TICKETTRADER_IDENTITY_HOST=http://tickettrader.identity
+      - TICKETTRADER_API_HOST=http://tickettrader.api
+      - TICKETTRADER_API_SECRET=S3cr3t@
+    ports:
+      - "5000:80"
+    depends_on:
+      - tickettrader.identity
+      - tickettrader.api
+
+  tickettrader.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TICKETTRADER_IDENTITY_HOST=http://tickettrader.identity
+      - TICKETTRADER_WEB_HOST=http://tickettrader.web
+      - TICKETTRADER_API_SECRET=S3cr3t@
+      - TICKETTRADER_EVENTDEFINITIONS_GATEWAY=http://tickettrader.eventdefinitions.gateway
+      - BUS_USERNAME=dev
+      - BUS_PASSWORD=qwerty
+      - BUS_PORT=5672
+      - BUS_VIRTUAL_HOST=/
+      - BUS_HOSTNAME=bus.rabbit
+    ports:
+      - "5010:80"
+    depends_on:
+      - tickettrader.identity
+      - tickettrader.payments.host
+      - tickettrader.eventdefinitions.gateway
+      - tickettrader.deliveries.host
+      - tickettrader.customers.host
+      - tickettrader.orders.host
+      - bus.rabbit
+
+  tickettrader.identity:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TICKETTRADER_IDENTITY_DB_CONNNECTION_STRING=User ID=postgres;Password=devpwd;Host=db.tickettrader.identity;Port=5432;Database=tickettrader-identity;Pooling=true;
+      - TICKETTRADER_WEB_HOST=http://tickettrader.web
+      - TICKETTRADER_API_HOST=http://tickettrader.api
+      - TICKETTRADER_IDENTITY_HOST=http://tickettrader.identity
+      - TICKETTRADER_API_SECRET=S3cr3t@
+    ports:
+      - "5020:80"
+    depends_on:
+      - db.tickettrader.identity
+
+  tickettrader.management:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TICKETTRADER_IDENTITY_HOST=http://tickettrader.identity
+      - TICKETTRADER_API_HOST=http://tickettrader.api
+      - TICKETTRADER_API_SECRET=S3cr3t@
+    ports:
+      - "5030:80"
+    depends_on:
+      - tickettrader.identity
+      - tickettrader.api
+
+  tickettrader.eventdefinitions.gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - TICKETTRADER_DAL_DB_CONNNECTION_STRING=User ID=postgres;Password=devpwd;Host=db.tickettrader.dal;Port=5432;Database=tickettrader-event-definitions;Pooling=true;
+    ports:
+      - "80"
+    depends_on:
+      - db.tickettrader.dal
+
+  tickettrader.customers.host:
+    environment:
+      - DOMAIN_REPOSITORY_CONNECTION_STRING=mongodb://db.mongo:27017/customers
+      - DOMAIN_REPOSITORY_STORE_NAME=customers
+      - READ_REPOSITORY_CONNECTION_STRING=mongodb://db.mongo:27017/customers_read
+      - READ_REPOSITORY_STORE_NAME=customers_read
+      - BUS_USERNAME=dev
+      - BUS_PASSWORD=qwerty
+      - BUS_PORT=5672
+      - BUS_VIRTUAL_HOST=/
+      - BUS_HOSTNAME=bus.rabbit
+    depends_on:
+      - db.mongo
+      - bus.rabbit
+
+  tickettrader.payments.host:
+    environment:
+      - DOMAIN_REPOSITORY_CONNECTION_STRING=mongodb://db.mongo:27017/payments
+      - DOMAIN_REPOSITORY_STORE_NAME=payments
+      - READ_REPOSITORY_CONNECTION_STRING=mongodb://db.mongo:27017/payments_read
+      - READ_REPOSITORY_STORE_NAME=payments_read
+      - BUS_USERNAME=dev
+      - BUS_PASSWORD=qwerty
+      - BUS_PORT=5672
+      - BUS_VIRTUAL_HOST=/
+      - BUS_HOSTNAME=bus.rabbit
+    depends_on:
+      - db.mongo
+      - bus.rabbit
+
+  tickettrader.deliveries.host:
+    environment:
+      - DOMAIN_REPOSITORY_CONNECTION_STRING=mongodb://db.mongo:27017/deliveries
+      - DOMAIN_REPOSITORY_STORE_NAME=deliveries
+      - READ_REPOSITORY_CONNECTION_STRING=mongodb://db.mongo:27017/deliveries_read
+      - READ_REPOSITORY_STORE_NAME=deliveries_read
+      - BUS_USERNAME=dev
+      - BUS_PASSWORD=qwerty
+      - BUS_PORT=5672
+      - BUS_VIRTUAL_HOST=/
+      - BUS_HOSTNAME=bus.rabbit
+    depends_on:
+      - db.mongo
+      - bus.rabbit
+
+  tickettrader.orders.host:
+    environment:
+      - DOMAIN_REPOSITORY_CONNECTION_STRING=mongodb://db.mongo:27017/orders
+      - DOMAIN_REPOSITORY_STORE_NAME=orders
+      - READ_REPOSITORY_CONNECTION_STRING=mongodb://db.mongo:27017/orders_read
+      - READ_REPOSITORY_STORE_NAME=orders_read
+      - BUS_USERNAME=dev
+      - BUS_PASSWORD=qwerty
+      - BUS_PORT=5672
+      - BUS_VIRTUAL_HOST=/
+      - BUS_HOSTNAME=bus.rabbit
+    depends_on:
+      - db.mongo
+      - bus.rabbit

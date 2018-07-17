@@ -1,0 +1,8 @@
+.disabled-link {
+  pointer-events: none;
+  cursor: default;
+}
+
+.link {
+  cursor: pointer;
+}

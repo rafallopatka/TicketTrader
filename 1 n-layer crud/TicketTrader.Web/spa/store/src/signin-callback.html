@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <script src="oidc-client.min.js"></script>
+    <script>
+        var mgr = new Oidc.UserManager({ loadUserInfo: true, filterProtocolClaims: true });
+        mgr.signinRedirectCallback().then(function (user) {
+            console.log(user);
+
+            window.location.href = window.location.origin + '/Spa/Store/AuthorizeRedirect';
+        });
+    </script>
+</body>
+</html>
+
