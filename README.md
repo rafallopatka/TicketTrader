@@ -20,8 +20,12 @@ Most of microservices uses ports and adapters architecture to allow increase mod
 Technologies used (same as previous plus):
 * MongoDb for aggregates persistance
 * Reactive Extensions - for asynchronous in process communications and events handling
-* RabbitMq + RawRabbit for commuunication between microservices and queueing 
+* RabbitMq + RawRabbit for communication between microservices and queueing 
 
+## 3 microservices actor model
+Reimplementation of main microservice to model and implement domain logic with actor model.
 
+Technologies used (same as previous plus):
+* Akka.NET - for actor model
 
 
