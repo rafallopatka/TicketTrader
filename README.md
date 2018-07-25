@@ -1,5 +1,5 @@
 # TicketTrader
-Sample project for selling tickets for events, presenting implementation of common architecture styles and technologies
+Project for selling tickets for events, presenting implementation of common architecture styles and technologies
 
 Repository contains three versions of the app representing stages of creation and evolving project between different styles
 
